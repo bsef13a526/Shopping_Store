@@ -1,0 +1,70 @@
+﻿@model List<suity.Models.Cart>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <div class="about_top">
+        <div class="container">
+            <div class="col-md-3">
+                <ul class="menu1">
+                    <li class="item1">
+                        <a class="">What To Buy ? </a>
+
+                    </li>
+                </ul>
+
+                <div class="box1">
+                    <ul class="box1_list">
+
+                        <li><a href="~/Home/Sales">T-Shirts</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9 content_right">
+                <div class="dreamcrub">
+                    <ul class="breadcrumbs">
+                        
+                        <li class="women">
+                            Checkout
+                        </li>
+                    </ul>
+                    <ul class="previous">
+                        <li><a href="~/Home/Sales">Back to Previous Page</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <h1 class="title1">Shopping cart</h1>
+
+
+                
+
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <ul class="cart-header">
+                                <li class="ring-in">
+                                   <img src="/Content/images/@item.image" class="img-responsive" alt="">
+                                </li>
+                                <li><span class="name">Product Id:@item.Id</span></li>
+
+                                <li><span class="cost">Price: Rs @item.price</span></li>
+
+                                <div class="clearfix"> </div>
+                            </ul>
+                        }
+                    }
+
+
+                
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>

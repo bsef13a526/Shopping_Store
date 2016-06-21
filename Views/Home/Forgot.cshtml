@@ -1,0 +1,134 @@
+﻿
+
+@model suity.Models.Customer
+@{
+    ViewBag.Title = "";
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    
+    <div class="about_top">
+        <div class="container">
+            <div class="col-md-3">
+                <ul class="menu1">
+                    <li class="item1">
+                        <a class="">What To Buy ? </a>
+
+                    </li>
+                </ul>
+
+                <div class="box1">
+                    <ul class="box1_list">
+
+                        <li><a href="~/Home/Sales">T-Shirts</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9 content_right">
+                <div class="dreamcrub">
+                    <ul class="breadcrumbs">
+
+                        <li class="women">
+                            Forgot Password
+                        </li>
+                    </ul>
+                    <ul class="previous">
+                        <li><a href="~/Home/Index">Back to Home Page</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="register">
+
+                    <div class="register-top-grid">
+                        <h3>Confirm Your Identity</h3>
+
+                        @using (Html.BeginForm("ForgotP", "Home", FormMethod.Post))
+                        {
+
+                            <div>
+                                <span>@Html.LabelFor(model => model.email)<label>*</label></span>
+                                @Html.EditorFor(model => model.email)
+                                @Html.ValidationMessageFor(model => model.email)
+
+
+
+
+
+                                <span>@Html.LabelFor(model => model.sq)<label>*</label></span>
+
+
+                                @Html.DropDownListFor(model => model.sq, new SelectList(
+                  new List<Object>{
+                       new { value =" What is your favourite food?" , text = "What is your favourite food?"  },
+                       new { value = "What is your favourite place?" , text = "What is your favourite place?" },
+                       new { value = "Who is your favourite player?" , text = "Who is your favourite player?"}
+                    },
+                  "value",
+                  "text",
+                   0))
+
+
+
+                                <span>@Html.LabelFor(model => model.ans)<label>*</label></span>
+
+                                @Html.EditorFor(model => model.ans)
+                                @Html.ValidationMessageFor(model => model.ans)
+
+
+
+
+
+                                <input type="submit" value="Submit">
+                            </div>
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="clearfix"> </div>
+                        <div class="register-but">
+
+
+                            <div class="clearfix"> </div>
+
+                            @{
+
+                                if (ViewBag.Message == 4)
+                                {
+                                    <script language="javascript">
+                                        alert("Incorrect info entered!");
+                                    </script>
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+

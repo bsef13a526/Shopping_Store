@@ -1,0 +1,215 @@
+﻿@model suity.Models.Customer
+@{
+    ViewBag.Title = "";
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+<div class="about_top">
+  <div class="container">
+      <div class="col-md-3">
+          <ul class="menu1">
+              <li class="item1">
+                  <a class="">What To Buy ? </a>
+
+              </li>
+          </ul>
+
+          <div class="box1">
+              <ul class="box1_list">
+
+                  <li><a href="~/Home/Sales">T-Shirts</a></li>
+
+              </ul>
+          </div>
+
+      </div>
+		<div class="col-md-9 content_right">
+		   <div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                  
+                    <li class="women">
+                        Register
+                    </li>
+               </ul>
+                <ul class="previous">
+                    <li><a href="~/Home/Index">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+		   </div>
+            <div class="register">
+
+    <div class="register-top-grid">
+        <h3>REGISTRATION</h3>
+
+
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+
+
+           
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.email)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.email)
+
+                    <input type="button" id="b1" value="Check" />
+                    <div id="result"></div>
+                    @Scripts.Render("~/bundles/jquery")
+                    <script>
+
+                        $(document).ready(function () {
+
+                            $('#checking').hide();
+
+                            $('#b1').click(function () {
+
+                                var Email = $('#email').val();
+
+                                //alert('User Name ='+ userName);
+                                $('#checking').show();
+                                $.getJSON("/Home/CheckUserName?email=" + Email, function (data) {
+                                    $('#checking').hide();
+                                    if (data) {
+                                        $('#result').text("Email already exists");
+
+                                    }
+                                    else {
+                                        $('#result').text("Email is available");
+                                    }
+                                });
+
+                            });
+
+                        });
+                    </script>
+
+                </div>
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.pass)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.pass, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.pass)
+                </div>
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.uname)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.uname, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.uname)
+
+                    
+                </div>
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.fname)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.fname, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.fname)
+                </div>
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.lname)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.lname, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.lname)
+                </div>
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.age)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.age, new { style = "width: 380px; height: 40px;border-style:groove" })
+                    @Html.ValidationMessageFor(model => model.age)
+                </div>
+            
+               <div class="editor-label">
+                   <span>@Html.LabelFor(model => model.sq)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.sq, new SelectList(
+                  new List<Object>{
+                       new { value =" What is your favourite food?" , text = "What is your favourite food?"  },
+                       new { value = "What is your favourite place?" , text = "What is your favourite place?" },
+                       new { value = "Who is your favourite player?" , text = "Who is your favourite player?"}
+                    },
+                  "value",
+                  "text",
+                   0),new { style = "width: 380px; height: 40px;border-style:groove" })
+                </div>
+
+                                <div class="editor-label">
+                                    <span>@Html.LabelFor(model => model.ans)<label>*</label></span>
+                                </div>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.ans, new { style = "width: 380px; height: 40px;border-style:groove" })
+                                    @Html.ValidationMessageFor(model => model.ans)
+                                </div>
+
+
+
+                <div class="editor-label">
+                    <span>@Html.LabelFor(model => model.img)<label>*</label></span>
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.img, new { type = "file", accept = "image/*" })
+                    @Html.ValidationMessageFor(m => m.img)
+                  
+                </div>
+
+             
+                              <input type="submit" value="Submit" style="Background:red" />   
+
+
+                                
+                                    
+                               
+                           
+                        }
+
+                       
+
+                 
+
+
+                    </div>
+                    <div class="register-bottom-grid">
+
+                        
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                    <div class="register-but">
+
+                        
+                        <div class="clearfix"> </div>
+
+
+
+          
+                </div>
+            </div>
+	    </div>
+	    <div class="clearfix"> </div>   	
+    </div>   
+</div>
+
+  
+</body>
+	

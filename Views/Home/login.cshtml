@@ -1,0 +1,117 @@
+﻿@model suity.Models.Customer
+@{
+    ViewBag.Title = "";
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+<div class="about_top">
+  <div class="container">
+      <div class="col-md-3">
+          <ul class="menu1">
+              <li class="item1">
+                  <a class="">What To Buy ? </a>
+
+              </li>
+          </ul>
+
+          <div class="box1">
+              <ul class="box1_list">
+
+                  <li><a href="~/Home/Sales">T-Shirts</a></li>
+
+              </ul>
+          </div>
+
+      </div>
+		<div class="col-md-9 content_right">
+		   <div class="dreamcrub">
+			   	 <ul class="breadcrumbs">
+                   
+                    <li class="women">
+                        Login
+                    </li>
+               </ul>
+                <ul class="previous">
+                    <li><a href="~/Home/Index">Back to Home Page</a></li>
+                </ul>
+                <div class="clearfix"></div>
+		   </div>
+		   <div class="register">
+			  <div class="col-md-6 login-right">
+			  	<h3>REGISTERED CUSTOMERS</h3>
+				<p>If you have an account with us, please log in.</p>
+
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            {
+
+                 <div>
+                    <span>@Html.LabelFor(model => model.email)<label>*</label></span>
+                     @Html.TextBoxFor(model => model.email, new { style = "width: 380px; height: 40px;border-style:groove" })
+                     @Html.ValidationMessageFor(model => model.email)
+                </div>
+                
+                 <div>
+                    <span>@Html.LabelFor(model => model.pass)<label>*</label></span>
+                     @Html.PasswordFor(model => model.pass, new { style = "width: 380px; height: 40px;border-style:groove" })
+                     @Html.ValidationMessageFor(model => model.pass)
+                </div>
+
+                  <div>
+                <a class="forgot" href="~/Home/Forgot">Forgot Your Password?</a>
+            </div>
+              
+
+                     <input type="submit" value="Login">
+
+
+            }
+
+
+
+          
+
+            
+               
+                
+
+
+                
+
+                
+
+               @{ 
+                    if (ViewBag.Message == 2)
+                {
+                <script language="javascript">
+                    alert("You have been registered successfully!");
+                </script>
+                } 
+                if (ViewBag.Message == 0)
+                {
+                <script language="javascript">
+                    alert("Invalid emailid or password!");
+                </script>
+                }                                                                                                                                   
+                }
+            
+
+			   </div>
+			    <div class="col-md-6 login-left">
+			  	 <h3>NEW CUSTOMERS</h3>
+				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 <a class="acount-btn" href="~/Home/Register">Create an Account</a>
+			   </div>	
+			   <div class="clearfix"> </div>
+		   </div>
+	    </div>
+	    <div class="clearfix"> </div>   	
+    </div>   
+</div>
+
+</body>		

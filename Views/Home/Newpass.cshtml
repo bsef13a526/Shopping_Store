@@ -1,0 +1,107 @@
+﻿
+@model suity.Models.Customer
+@{
+    ViewBag.Title = "";
+}
+
+@{
+ if (ViewBag.Message == 5)
+                             {
+<script language="javascript">
+    alert("Correct info entered!");
+</script>
+    
+       }
+                             }
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+   
+    <div class="about_top">
+        <div class="container">
+            <div class="col-md-3">
+                <ul class="menu1">
+                    <li class="item1">
+                        <a class="">What To Buy ? </a>
+
+                    </li>
+                </ul>
+
+                <div class="box1">
+                    <ul class="box1_list">
+
+                        <li><a href="~/Home/Sales">T-Shirts</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9 content_right">
+                <div class="dreamcrub">
+                    <ul class="breadcrumbs">
+
+                        <li class="women">
+                            Change Password
+                        </li>
+                    </ul>
+                    <ul class="previous">
+                        <li><a href="~/Home/Index">Back to Home Page</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="register">
+                    
+                        <div class="register-top-grid">
+                            <h3>Change Password</h3>
+
+                            @using (Html.BeginForm("Resetp", "Home", FormMethod.Post))
+{
+
+
+
+    <div>
+        <span>@Html.LabelFor(model => model.pass)<label>*</label></span>
+        @Html.PasswordFor(model => model.pass)
+        @Html.ValidationMessageFor(model => model.pass)
+
+
+
+
+
+        <input type="submit" value="Submit">
+
+    </div>
+}
+
+
+   
+
+
+                        </div>
+
+
+                        <div class="clearfix"> </div>
+                        <div class="register-but">
+
+                           
+                            <div class="clearfix"> </div>
+
+                          
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    </div>
+
+
+</body>
+
+
+
